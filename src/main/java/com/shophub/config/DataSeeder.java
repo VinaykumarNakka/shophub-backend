@@ -39,14 +39,14 @@ public class DataSeeder implements CommandLineRunner {
         Category home = categories.save(new Category("Home & Kitchen"));
         Category books = categories.save(new Category("Books"));
 
-        product(seller, electronics, "Wireless Headphones", "Bluetooth over-ear headphones with 30-hour battery life.", "59.99", 40, "headphones");
-        product(seller, electronics, "Smart Watch", "Fitness tracking, heart-rate monitor and notifications.", "89.00", 25, "watch");
-        product(seller, electronics, "Portable Power Bank 20000mAh", "Fast-charging power bank with dual USB ports.", "29.50", 100, "powerbank");
-        product(seller, fashion, "Classic Denim Jacket", "Regular-fit denim jacket in washed blue.", "49.90", 30, "jacket");
-        product(seller, fashion, "Running Shoes", "Lightweight breathable shoes for daily runs.", "64.00", 50, "shoes");
-        product(seller, home, "Stainless Steel Water Bottle", "1 litre insulated bottle, keeps drinks cold for 24 hours.", "18.75", 80, "bottle");
-        product(seller, home, "Non-stick Cookware Set", "5-piece induction-friendly cookware set.", "74.99", 15, "cookware");
-        product(seller, books, "Clean Code", "A handbook of agile software craftsmanship.", "32.00", 60, "book");
+        product(seller, electronics, "Wireless Headphones", "Bluetooth over-ear headphones with 30-hour battery life.", "2999.00", 40, "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop");
+        product(seller, electronics, "Smart Watch", "Fitness tracking, heart-rate monitor and notifications.", "4499.00", 25, "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop");
+        product(seller, electronics, "Portable Power Bank 20000mAh", "Fast-charging power bank with dual USB ports.", "1499.00", 100, "https://picsum.photos/seed/powerbank-item/400/300");
+        product(seller, fashion, "Classic Denim Jacket", "Regular-fit denim jacket in washed blue.", "2499.00", 30, "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=300&fit=crop");
+        product(seller, fashion, "Running Shoes", "Lightweight breathable shoes for daily runs.", "3199.00", 50, "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop");
+        product(seller, home, "Stainless Steel Water Bottle", "1 litre insulated bottle, keeps drinks cold for 24 hours.", "899.00", 80, "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&h=300&fit=crop");
+        product(seller, home, "Non-stick Cookware Set", "5-piece induction-friendly cookware set.", "3799.00", 15, "https://images.unsplash.com/photo-1584990347163-0e6a1ad4b6b4?w=400&h=300&fit=crop");
+        product(seller, books, "Clean Code", "A handbook of agile software craftsmanship.", "899.00", 60, "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=300&fit=crop");
     }
 
     private User user(String name, String email, String password, Role role, boolean approved) {
@@ -59,7 +59,7 @@ public class DataSeeder implements CommandLineRunner {
         return users.save(u);
     }
 
-    private void product(User seller, Category cat, String name, String desc, String price, int stock, String seed) {
+    private void product(User seller, Category cat, String name, String desc, String price, int stock, String imageUrl) {
         Product p = new Product();
         p.setSeller(seller);
         p.setCategory(cat);
@@ -67,7 +67,7 @@ public class DataSeeder implements CommandLineRunner {
         p.setDescription(desc);
         p.setPrice(new BigDecimal(price));
         p.setStock(stock);
-        p.setImageUrl("https://picsum.photos/seed/shophub-" + seed + "/400/300");
+        p.setImageUrl(imageUrl);
         products.save(p);
     }
 }
