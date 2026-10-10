@@ -1,0 +1,11 @@
+package com.shophub.repository;
+
+import com.shophub.model.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface ProductRepository extends JpaRepository<Product, Long> {
+    List<Product> findByActiveTrueOrderByIdDesc();
+    List<Product> findBySellerIdAndActiveTrueOrderByIdDesc(Long sellerId);
+    long countByActiveTrue();
+}
